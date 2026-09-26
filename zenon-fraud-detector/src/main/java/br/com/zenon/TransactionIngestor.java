@@ -12,7 +12,7 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 public class TransactionIngestor {
-    private static final int MAX_TRANSACTIONS = 1_000;
+    private static final int MAX_TRANSACTIONS = 50_000;
     private static final String[] COLUMNS = {
             "step", "type", "amount", "nameOrig", "oldbalanceOrg", "newbalanceOrig",
             "nameDest", "oldbalanceDest", "newbalanceDest", "isFraud", "isFlaggedFraud"

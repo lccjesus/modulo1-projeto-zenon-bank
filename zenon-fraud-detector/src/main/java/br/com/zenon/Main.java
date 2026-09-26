@@ -35,9 +35,15 @@ public class Main {
             System.err.println("Erro inesperado durante a execução: " + ex.getMessage());
             return;
         }
-        IO.println(transactions.size());
-
-        transactions.forEach(IO::println);
+        var analyzer = new FraudAnalyzer(transactions);
+        IO.println("1. Total de Fraudes: " + analyzer.fraudCount());
+        IO.println("2. Top 3 Fraudes de Maior Valor:");
+        analyzer.topFraudsByAmount(3).forEach(IO::println);
+        IO.println("3. Clientes Suspeitos:");
+        analyzer.topSuspiciousClients(5).forEach(IO::println);
+        IO.println("4. Prejuízo Total: " + analyzer.totalLoss());
+        IO.println("5. Fraudes por Tipo:");
+        analyzer.fraudsByType().forEach((type, count) -> IO.println(" - " + type + ": " + count));
 
     }
 
