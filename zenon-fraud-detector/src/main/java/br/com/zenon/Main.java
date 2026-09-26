@@ -25,11 +25,20 @@ public class Main {
         IO.println("----------------------------------------------------------------------------------------");
 
         var transactionIngestor = new TransactionIngestor();
-        List<Transaction> transactions = transactionIngestor.read(Path.of("data/data.csv"));
+        List<Transaction> transactions;
+        try {
+            transactions = transactionIngestor.read(Path.of("data/bad_data.csv"));
+        } catch (TransactionImportException ex) {
+            System.err.println(ex.getMessage());
+            return;
+        } catch (Exception ex) {
+            System.err.println("Erro inesperado durante a execução: " + ex.getMessage());
+            return;
+        }
         IO.println(transactions.size());
 
-        transactions.stream().limit(10).forEach(IO::println);
-
+        transactions.forEach(IO::println);
 
     }
+
 }
