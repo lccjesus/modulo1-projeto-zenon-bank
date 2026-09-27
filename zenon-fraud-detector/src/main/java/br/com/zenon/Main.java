@@ -27,7 +27,7 @@ public class Main {
         var transactionIngestor = new TransactionIngestor();
         List<Transaction> transactions;
         try {
-            transactions = transactionIngestor.read(Path.of("data/bad_data.csv"));
+            transactions = transactionIngestor.read(Path.of("data/data.csv"));
         } catch (TransactionImportException ex) {
             System.err.println(ex.getMessage());
             return;
